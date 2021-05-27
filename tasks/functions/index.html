@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/atom-one-dark.min.css">
+    <title>Functions (007)</title>
+</head>
+
+<body style="background: azure">
+<div class="wrapper">
+    <section class="main">
+        <h2>Рекурсивные функции</h2>
+        <div class="lab-name">
+            <p>Допишите определение функции pwr от a и b, которая определяется через себя и mpy и выдаёт a ** b для
+                положительных целых чисел.</p>
+            <p>Открыв консоль браузера, можно вызвать функцию pwr.</p>
+        </div>
+
+        <div>
+            <pre>
+                <code class="js">
+                    const sec = a => {
+                        return a + 1;
+                    };
+
+                    const add = (a, b) => {
+                        if (b === 0) {
+                            return a;
+                        } else {
+                            return sec(add(a, b - 1));
+                        }
+                    }
+                    const mpy = (a, b) => {
+                        if (b === 1) {
+                            return a;
+                        } else {
+                            return add(a, mpy(a, b - 1));
+                        }
+                    }
+                    const pwr = (a, b) => {
+                        if (b === 0) {
+                            return 1;
+                        } else {
+                            return (b === 1) ? a : mpy(a, pwr(a, b - 1));
+                        }
+                    }
+
+                    // Maximum value is 13.
+                    // console.log(pwr(2, 14)); // Error: Maximum call stack size exceeded
+
+                </code>
+            </pre>
+        </div>
+    </section>
+
+    <hr>
+    <h4 id="author" title="GossJS">Наталья Милантьева</h4>
+</div>
+<script src="../../labs/22-02-21-func/func007.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/languages/go.min.js"></script>
+<script charset="utf-8">
+    hljs.highlightAll();
+</script>
+</body>
+
+</html>
